@@ -1,17 +1,17 @@
-import { ThemeProvider } from "styled-components";
-import { NextFunctionComponent } from "next";
-import { theme } from "../styles/Theme";
-
 import "antd/dist/antd.css";
-
-import Navigation from "../components/Navigation";
+import { ThemeProvider } from "styled-components";
 import { Toaster } from "react-hot-toast";
+import { NextPage } from "next";
+
+
+import { theme } from "../styles/Theme";
+import Navigation from "../components/Navigation";
 import { UserContext } from "../lib/context";
 import { useUserData } from "../lib/hooks";
 import { Post } from ".";
 
 const MyApp: React.FC<{
-  Component: NextFunctionComponent;
+  Component: NextPage<any>;
   pageProps: Post[];
 }> = ({ Component, pageProps }) => {
   const userData = useUserData();

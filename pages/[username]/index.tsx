@@ -1,5 +1,4 @@
 import { getUserWithUsername, postToJSON } from "../../lib/utils/utils";
-import { UserAuthenticated } from "../../components/UserAuthenticated";
 import { UserProfile } from "../../components/UserProfile";
 import { PostFeed } from "../../components/PostList";
 import styled from "styled-components";
@@ -36,7 +35,7 @@ export async function getServerSideProps({ query }) {
   }
 
   return {
-    props: { user, posts }
+    props: { user, posts },
   };
 }
 

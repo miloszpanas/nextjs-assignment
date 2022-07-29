@@ -37,7 +37,7 @@ const CreateNewPost: React.FC = (): JSX.Element => {
   const slug = encodeURI(kebabCase(title));
   const isValid = title.length > 3 && title.length < 100;
 
-  const createPost = async (e: React.FormEvent<HTMLFormElement>) => {
+  const createPost = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     const uid = auth.currentUser.uid;
     const ref = firestore
