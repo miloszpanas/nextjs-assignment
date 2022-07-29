@@ -13,8 +13,6 @@ const firebaseConfig = {
   measurementId: "G-ZCXJE2Z5T7",
 };
 
-// check for vercel deployment
-
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
