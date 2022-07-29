@@ -8,7 +8,7 @@ interface IProps {
   fallback?: React.ReactNode;
 }
 
-export const UserAuthenticated: React.FC<IProps> = ({ children, fallback }) => {
+export const UserAuthenticated: React.FC<any> = ({ children, fallback }) => {
   const { username } = useContext(UserContext);
 
   return username
