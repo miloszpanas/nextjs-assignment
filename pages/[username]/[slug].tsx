@@ -1,9 +1,9 @@
 import React from "react";
-import { firestore } from "../../lib/firebase";
-import { getUserWithUsername, postToJSON } from "../../lib/utils/utils";
 import { useDocumentData } from "react-firebase-hooks/firestore";
-import { PostContent } from "../../components/PostContent";
+import { firestore } from "../../lib/firebase";
 import { PostContentContainer } from "../../styles/PostItemStyled";
+import { getUserWithUsername, postToJSON } from "../../lib/utils/utils";
+import { PostContent } from "../../components/PostContent";
 import { Post } from "..";
 
 export const getStaticProps = async ({ params }) => {
@@ -61,7 +61,7 @@ interface IPostPageProps {
 
  const PostPage: React.FC<IPostPageProps> = (props) => {
   const postRef = firestore.doc(props.path);
-  const [realTimePost] = useDocumentData(postRef);
+  const [realTimePost] = useDocumentData(postRef as any);
   const post = realTimePost || props.post;
 
   return (
