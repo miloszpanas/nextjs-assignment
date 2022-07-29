@@ -40,21 +40,4 @@ export const PostItem = ({ post }) => {
       </Card>
     </CardContainer>
   );
-
-  // return (
-  //   <CardContainer>
-  //     <Link href={`/${post.username}`}>
-  //       <a>
-  //         <strong>By @{post.username}</strong>
-  //       </a>
-  //     </Link>
-  //     <Link href={`/${post.username}/${post.slug}`}>
-  //       <CardTitle>{post.title}</CardTitle>
-  //     </Link>
-
-  //     <CardFooter>
-  //       <span>{wordCount} words.</span>
-  //     </CardFooter>
-  //   </CardContainer>
-  // );
 };

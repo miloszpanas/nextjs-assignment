@@ -1,9 +1,9 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { UserAuthenticated } from "./UserAuthenticated";
 import { useRouter } from "next/router";
 import { Button, Card } from "antd";
 import { toast } from "react-hot-toast";
+import { UserAuthenticated } from "./UserAuthenticated";
 
 export const CardContainer = styled.div`
   margin: 10rem 7rem 3rem;
