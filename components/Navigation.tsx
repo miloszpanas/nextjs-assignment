@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { UserContext } from "../lib/context";
 import { auth } from "../lib/firebase";
 
-import { Button } from 'antd';
+import { Button } from "antd";
 
 import {
   NavbarItem,
@@ -25,19 +25,19 @@ export default function Navbar() {
   };
 
   const NavbarContainer = styled.nav`
-  display: flex;
-  align-items: center;
-  height: 70px;
-  width: 100%;
-  background: #000000;
-  color: ${(props) => props.theme.colors.black};
-  position: fixed;
-  top: 0;
-  padding: 0 10vw;
-  font-weight: bold;
-  border-bottom: 2px solid #b5bdc4;
-  z-index: 99;
-`;
+    display: flex;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    background: #000000;
+    color: ${(props) => props.theme.colors.black};
+    position: fixed;
+    top: 0;
+    padding: 0 10vw;
+    font-weight: bold;
+    border-bottom: 2px solid #b5bdc4;
+    z-index: 99;
+  `;
 
   return (
     <NavbarContainer>
@@ -45,18 +45,24 @@ export default function Navbar() {
         <LogoContainer>
           <NavbarItem>
             <Link href="/">
-              <Button type="primary" size="large">Next JS</Button>
+              <Button type="primary" size="large">
+                Next JS
+              </Button>
             </Link>
           </NavbarItem>
         </LogoContainer>
         {username && (
           <ButtonsContainer>
             <NavbarItem>
-              <Button type="primary" danger size="large" onClick={signOut}>Sign Out</Button>
+              <Button type="primary" danger size="large" onClick={signOut}>
+                Sign Out
+              </Button>
             </NavbarItem>
             <NavbarItem>
               <Link href="/admin">
-                <Button type="primary" size="large">New Post</Button>
+                <Button type="primary" size="large">
+                  New Post
+                </Button>
               </Link>
             </NavbarItem>
             <NavbarItem>
@@ -65,7 +71,10 @@ export default function Navbar() {
                   style={{ borderRadius: "50%" }}
                   width={50}
                   height={50}
-                  src={user.photoURL}
+                  src={
+                    user?.photoURL ||
+                    "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200"
+                  }
                 />
               </Link>
             </NavbarItem>
@@ -75,7 +84,9 @@ export default function Navbar() {
         {!username && (
           <NavbarItem>
             <Link href="/enter">
-              <Button type="primary" size="large">Log in</Button>
+              <Button type="primary" size="large">
+                Log in
+              </Button>
             </Link>
           </NavbarItem>
         )}

@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { Spin } from "antd";
+import styled from "styled-components";
 import { PostFeed } from "../components/PostList";
 import { Button } from "antd";
 import { firestore, fromMillis } from "../lib/firebase";
 import { postToJSON } from "../lib/utils/utils";
 import { AppContainer } from "../styles/ContainerStyled";
 
+const ButtonWrapper = styled.div`
+  margin-left: 7rem;
+`;
 export interface Post {
   content: string;
   createdAt: number;
@@ -34,7 +38,7 @@ export async function getServerSideProps(context) {
   const posts = (await postsQuery.get()).docs.map(postToJSON);
 
   return {
-    props: { posts }
+    props: { posts },
   };
 }
 
@@ -74,12 +78,18 @@ const Home: React.FC<IHomeProps> = (props) => {
     <AppContainer>
       <PostFeed posts={posts} />
       {!loading && !postsEnd && (
-        <Button type="primary" size="large" onClick={getMorePosts}>
-          Load more
-        </Button>
+        <ButtonWrapper>
+          <Button type="primary" size="large" onClick={getMorePosts}>
+            Load more
+          </Button>
+        </ButtonWrapper>
       )}
       {loading && <Spin size="large" />}
-      {postsEnd && "No more posts to load"}
+      {postsEnd && (
+        <ButtonWrapper>
+          <p>No more posts to load</p>
+        </ButtonWrapper>
+      )}
     </AppContainer>
   );
 };

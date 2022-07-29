@@ -1,12 +1,23 @@
 import Link from "next/link";
-import ReactMarkdown from "react-markdown";
-import { UserAuthenticated } from "../components/UserAuthenticated";
+import styled from "styled-components";
+import { UserAuthenticated } from "./UserAuthenticated";
 import { useRouter } from "next/router";
-import { Button } from "antd";
+import { Button, Card } from "antd";
 import { toast } from "react-hot-toast";
-import { SingleCardContainer, CardTitle } from "../styles/PostItemStyled";
+
+export const CardContainer = styled.div`
+  margin: 10rem 7rem 3rem;
+  padding-top: 9rem 10rem;
+  min-width: 30vw;
+`;
+
+export const DetailsContainer = styled.div`
+  margin-top: 1rem;
+`;
 
 export const PostContent = ({ post, postRef }) => {
+  const { Meta } = Card;
+
   const router = useRouter();
   const createdAt =
     typeof post?.createdAt === "number"
@@ -20,23 +31,28 @@ export const PostContent = ({ post, postRef }) => {
   };
 
   return (
-    <SingleCardContainer>
-      <CardTitle>{post?.title}</CardTitle>
-      <span className="text-sm">
-        <>
-          Written by{" "}
-          <Link href={`/${post.username}/`}>
-            <a className="text-info">@{post.username}</a>
-          </Link>{" "}
-          on {createdAt.toISOString().slice(0, 10)}
-        </>
-      </span>
-      <ReactMarkdown>{post?.content}</ReactMarkdown>
-      <UserAuthenticated>
-        <Button type="danger" size="large" onClick={deletePost}>
-          Delete post
-        </Button>
-      </UserAuthenticated>
-    </SingleCardContainer>
+    <CardContainer>
+      <Card
+        hoverable
+        actions={[
+          <UserAuthenticated>
+            <Button type="primary" danger size="large" onClick={deletePost}>
+              Delete post
+            </Button>
+          </UserAuthenticated>,
+        ]}
+      >
+        <Meta title={post.content} />
+        <DetailsContainer>
+          <>
+            Written by{" "}
+            <Link href={`/${post.username}/`}>
+              <a className="text-info">@{post.username}</a>
+            </Link>{" "}
+            on {createdAt.toISOString().slice(0, 10)}
+          </>
+        </DetailsContainer>
+      </Card>
+    </CardContainer>
   );
 };

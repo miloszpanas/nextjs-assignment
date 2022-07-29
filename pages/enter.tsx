@@ -36,7 +36,7 @@ const SignOut: React.FC = (): JSX.Element => {
     }
   };
   return (
-    <Button type="danger" size="large" onClick={handleSignOut}>
+    <Button type="primary" danger size="large" onClick={handleSignOut}>
       <span>Sign Out</span>
     </Button>
   );
