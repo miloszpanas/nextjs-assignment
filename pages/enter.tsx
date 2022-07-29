@@ -84,7 +84,6 @@ const UsernameMessage: React.FC<{
   return null;
 };
 
-// Username form
 const UsernameForm: React.FC = (): JSX.Element => {
   const [formValue, setFormValue] = useState<string>("");
   const [isValid, setIsValid] = useState<boolean>(false);
@@ -92,7 +91,7 @@ const UsernameForm: React.FC = (): JSX.Element => {
 
   const { user, username } = useContext(UserContext);
 
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
     const userDoc = firestore.doc(`users/${user.uid}`);
