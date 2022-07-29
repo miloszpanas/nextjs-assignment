@@ -52,7 +52,7 @@ export default function Navbar() {
         {username && (
           <ButtonsContainer>
             <NavbarItem>
-              <Button type="danger" size="large" onClick={signOut}>Sign Out</Button>
+              <Button type="primary" danger size="large" onClick={signOut}>Sign Out</Button>
             </NavbarItem>
             <NavbarItem>
               <Link href="/admin">
@@ -65,7 +65,7 @@ export default function Navbar() {
                   style={{ borderRadius: "50%" }}
                   width={50}
                   height={50}
-                  src={user?.photoURL || "/hacker.png"}
+                  src={user.photoURL}
                 />
               </Link>
             </NavbarItem>
