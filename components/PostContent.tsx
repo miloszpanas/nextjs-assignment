@@ -35,7 +35,7 @@ export const PostContent = ({ post, postRef }) => {
       <Card
         hoverable
         actions={[
-          <UserAuthenticated>
+          <UserAuthenticated key={post.username}>
             <Button type="primary" danger size="large" onClick={deletePost}>
               Delete post
             </Button>

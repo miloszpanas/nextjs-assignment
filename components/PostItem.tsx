@@ -20,7 +20,7 @@ export const PostItem = ({ post }) => {
       <Card
         hoverable
         actions={[
-          <Link href={`/${post.username}/${post.slug}`}>
+          <Link href={`/${post.username}/${post.slug}`} key={post.username}>
             <Button type="primary" size="large">
               Show Post
             </Button>
